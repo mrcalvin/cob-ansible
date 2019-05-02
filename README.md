@@ -5,8 +5,9 @@ Java. The examples adopt the notion of [Ansible](https://www.ansible.com/) [play
 
 https://github.com/mrcalvin/cob-ansible
 
-This is the supplementary Web site to the manuscript *Chain of Builders:\\A Pattern of Variable Syntax Processing for Internal DSLs*
-(submitted to EuroPLoP'19) by
+This is the supplementary Web site to the manuscript *Chain of
+Builders: A Pattern of Variable Syntax Processing for Internal DSLs*
+(submitted to [EuroPLoP'19](http://europlop.net/content/call-papers-europlop-2019)) by
 [Stefan Sobernig](https://nm.wu.ac.at/nm/sobernig).
 
 The supplemental material includes implementation examples for the
