@@ -4,8 +4,12 @@ import at.ac.wu.nm.ansible.syntax.strategy.Expect;
 
 import at.ac.wu.nm.ansible.syntax.chain.*;
 
+import at.ac.wu.nm.ansible.syntax.chain.unified.MyPlaybookBuilder;
+import at.ac.wu.nm.expr.TestExprBuilder;;
+
 public class App 
 {
+  
   public static void main( String[] args )
   {
     at.ac.wu.nm.ansible.syntax.single.
@@ -83,6 +87,34 @@ public class App
                 "statusCode is failed")
       .taskWhen("run another command", 
                 "statusCode is succeeded");
+    /*// end //*/
+    
+    
+    at.ac.wu.nm.expr.
+    /*// expr1 //*/
+    TestExprBuilder.Test()
+     .variable("varName").eq("foo")
+    /*// end //*/
+     .get()
+     .evaluate(
+         TestExprBuilder.SimpleContext().
+           put("statusCode","none").
+           put("executionTime","1000").
+           get()
+     );
+    
+    at.ac.wu.nm.ansible.syntax.chain.unified.
+    /*// expr2 //*/
+    MyPlaybookBuilder.Playbook()
+    .play()
+      .task("run some command")
+        .when(MyPlaybookBuilder.Test()
+            .variable("statusCode")
+            .eq("failed"))
+      .task("run another command")
+        .when(MyPlaybookBuilder.Test()
+            .variable("statusCode")
+            .eq("succeeded"));
     /*// end //*/
 
 
